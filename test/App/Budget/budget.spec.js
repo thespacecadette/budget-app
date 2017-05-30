@@ -2,7 +2,7 @@ import React from 'react';
 import renderer from 'react-test-renderer';
 import Budget from './../../../src/App/Budget/index.js';
 import expect from 'expect';
-import { render, shallow, mount } from 'enzyme';
+import { render } from 'enzyme';
 import enzymify from 'expect-enzyme'
 expect.extend(enzymify);
 import configureStore from 'redux-mock-store';
