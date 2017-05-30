@@ -1,10 +1,10 @@
-import { generateId } from './../utils/';
+import { generateUniqueKey } from './../utils/';
 
 export const LOAD_BUDGET = 'LOAD_BUDGET';
 export const LOAD_BUDGET_FAIL = 'LOAD_BUDGET_FAIL';
 export const CREATE_INCOMEEXPENSE = 'CREATE_INCOMEEXPENSE';
 export const CREATE_INCOMEEXPENSE_FAIL = 'CREATE_INCOMEEXPENSE_FAIL';
-export const LOAD_INCOMEEXPENSE = 'LOAD_INCOMEEXPENSE';
+export const RESET_INCOMEEXPENSE = 'RESET_INCOMEEXPENSE';
 
 export const loadBudget = (budget) => ({
     type: LOAD_BUDGET,
@@ -15,6 +15,10 @@ export const loadBudget = (budget) => ({
 
 export const loadIncomeExpenses = () => ({
     type: LOAD_INCOMEEXPENSE,
+});
+
+export const resetNewIncomeExpense = () => ({
+    type: RESET_INCOMEEXPENSE,
 });
 
 export const loadBudgetFail = () => ({
@@ -38,9 +42,9 @@ export const createIncomeExpenseFail = () => ({
     }
 });
 
-export const initNewIncomeExpense = () => {
+export const resetIncomeExpense = () => {
     return dispatch => {
-        dispatch(loadIncomeExpenses())
+        dispatch(resetNewIncomeExpense())
     };
 };
 
@@ -49,7 +53,7 @@ export const createNewIncomeExpense = (item) => {
         if(!item) {
             dispatch(createIncomeExpenseFail());
         }
-        const incomeExpenseId = generateId(item.type);
+        const incomeExpenseId = generateUniqueKey(item.type);
         const incomeExpense = {
             incomeExpenseId,
             name: item.name,
@@ -67,7 +71,7 @@ export const budgetReducer = (userId) => {
         if(!userId) {
             dispatch(loadBudgetFail());
         }
-        const budgetId = generateId(`budget-${userId}`);
+        const budgetId = generateUniqueKey(`budget-${userId}`);
         const budget = {
             budgetId,
         };

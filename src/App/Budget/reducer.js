@@ -3,9 +3,9 @@ import {
     LOAD_BUDGET_FAIL,
     LOAD_INCOMEEXPENSE,
     CREATE_INCOMEEXPENSE,
-    CREATE_INCOMEEXPENSE_FAIL
+    CREATE_INCOMEEXPENSE_FAIL,
+    RESET_INCOMEEXPENSE,
 } from './actions';
-import { } from './constants.js';
 
 const initalState = {
     budgetId: '',
@@ -40,6 +40,10 @@ export const fetchBudget = (state = initalState, action) => {
         case CREATE_INCOMEEXPENSE_FAIL:
             return Object.assign({}, state, {
                 status: action.payload.status,
+            })
+        case RESET_INCOMEEXPENSE:
+            return Object.assign({}, state, {
+                status: null,
             })
         default:
             return state

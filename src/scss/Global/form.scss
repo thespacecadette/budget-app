@@ -1,5 +1,6 @@
 $input-height: 35px;
 $form-size: 16px;
+$input-hover: #f8f8f8;
 
 fieldset {
     border: 0 none transparent;
@@ -13,9 +14,15 @@ input[type=text], input[type=password] {
     border: 1px solid $border-colour;
     color: $form-color;
     font-size: $form-size;
+    outline: none;
 
-    &.wide {
-        width: 100%;
+    &:focus {
+        border: 1px solid $blue;
+    }
+
+    &:hover {
+        background-color: $input-hover;
+        border: 1px solid $blue;
     }
 }
 
@@ -26,7 +33,6 @@ label {
 
     &:hover {
             cursor: pointer;
-            background-color: yellow;
         }
 }
 

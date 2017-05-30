@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import Tooltip from './../../Global/ui/tooltip.jsx';
 import { HELPER_TEXT } from './../constants';
+import { formatCurrency } from './../../utils/';
 
 export default class NewIncomeExpense extends Component {
     constructor(props) {
@@ -10,9 +11,9 @@ export default class NewIncomeExpense extends Component {
 
         this.state = {
             helperIsHidden: true,
-            name: false,
-            amount: false,
-            frequency: false,
+            name: '',
+            amount: '',
+            frequency: '',
             validState: '',
         }
     }
@@ -37,10 +38,11 @@ export default class NewIncomeExpense extends Component {
                 validState: 'error',
             });
         } else {
+            this.props.dismiss();
             this.setState({
-                name: false,
-                amount: false,
-                frequency: false,
+                name: '',
+                amount: '',
+                frequency: '',
                 validState: '',
             });
             this.props.updateIncomeExpense({
@@ -49,34 +51,42 @@ export default class NewIncomeExpense extends Component {
                 frequency: this.state.frequency,
                 type: this.props.type,
             })
-
-            this.props.dismiss();
         }
+    }
+
+    formatCurrency(event) {
+        const formattedCurrency = formatCurrency(event.target.value);
+
+        this.setState({
+            amount: formattedCurrency,
+        });
     }
 
     render() {
         if (!this.props.type) return null;
-        
+
         return <div className={`newIncomeExpense ${this.state.validState}`}>
-            <h2>Add {this.props.type}</h2>
             <div className="newIncomeExpense__name">
-                <input onChange={this.updateItem.bind(this)} className="wide" type="text" name="name" placeholder={`Name of ${this.props.type}`} />
+                <input value={this.state.name} onChange={this.updateItem.bind(this)} className="wide" type="text" name="name" placeholder={`Add name of ${this.props.type}`} />
             </div>
             <div className="newIncomeExpense__amount">
-                <input onChange={this.updateItem.bind(this)} className="wide" type="text" name="amount" placeholder="$" />
+                <input value={this.state.amount} onFocus={() => { this.setState({ amount: '' })}} onBlur={this.formatCurrency.bind(this)} onChange={this.updateItem.bind(this)} className="wide" type="text" name="amount" placeholder="$" />
             </div>
             <div className="clear" />
             <div className="newIncomeExpense__frequency">
-                <label><input className="newIncomeExpense__frequencyOneOff" onChange={this.updateItem.bind(this)} type="radio" name="frequency" value="oneOff" />One off</label>
                 <label>
-                    <input onChange={this.updateItem.bind(this)} type="radio" name="frequency" value="reoccuring" />
+                    <input value={this.state.frequency} className="newIncomeExpense__frequencyOneOff" onChange={this.updateItem.bind(this)} type="radio" name="frequency" value="oneOff" />
+                    One off
+                </label>
+                <label>
+                    <input value={this.state.frequency} onChange={this.updateItem.bind(this)} type="radio" name="frequency" value="reoccuring" />
                     Reoccuring
                 <Tooltip toggle={this.toggleHelper.bind(this)} isHidden={this.state.helperIsHidden} message={HELPER_TEXT.REOCCURING_EXPENSES} />
                 </label>
             </div>
             <div className="newIncomeExpense__save">
-                <button onClick={this.save.bind(this)} className="btn btn-block btn-success btn-lg">Save {this.props.type}</button>
-                <button onClick={this.props.dismiss} className="btn btn-block btn-danger btn-lg">Cancel</button>
+                <button onClick={this.save.bind(this)} className="btn btn-block btn-success">Save {this.props.type}</button>
+                <button onClick={this.props.dismiss} className="btn btn-block btn-danger">Cancel</button>
             </div>
         </div>;
     }

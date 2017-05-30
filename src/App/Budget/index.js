@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import { initNewIncomeExpense, createNewIncomeExpense } from './actions';
+import { resetIncomeExpense, createNewIncomeExpense } from './actions';
 import New from './components/new.jsx';
 import Notification from './../Global/ui/notification.jsx';
 export class Budget extends Component {
@@ -14,6 +14,7 @@ export class Budget extends Component {
     }
 
     addState(event) {
+        this.props.resetIncomeExpenses();
         this.setState({
             addState: event.target.name,
         });
@@ -23,11 +24,14 @@ export class Budget extends Component {
         return <div className="budget">
             <h2 className={this.state.addState ? 'hidden' : ''}>Budget</h2>
             <Notification type="success" message={this.props.budget.status} />
-            <button className={this.state.addState ? 'hidden' : 'budget__addExpense btn btn-default btn-lg'} type="button" name="expense" onClick={this.addState.bind(this)}>Add expense</button>
-            <button className={this.state.addState ? 'hidden' : 'budget__addIncome btn btn-default btn-lg'} type="button" name="income" onClick={this.addState.bind(this)}>Add income</button>
+            <button className={this.state.addState ? 'hidden' : 'budget__addExpense btn btn-default'} type="button" name="expense" onClick={this.addState.bind(this)}>Add expense</button>
+            <button className={this.state.addState ? 'hidden' : 'budget__addIncome btn btn-default'} type="button" name="income" onClick={this.addState.bind(this)}>Add income</button>
             <div className="clear" />
-            <New updateIncomeExpense={this.props.updateIncomeExpense} type={this.state.addState} dismiss={() => { this.setState({ addState: false }) }} />
-            {/*{JSON.stringify(this.props.budget.incomeExpenses)}*/}
+            <New
+                updateIncomeExpense={this.props.updateIncomeExpense}
+                type={this.state.addState}
+                dismiss={() => { this.setState({ addState: false }) }} />
+            {JSON.stringify(this.props.budget.incomeExpenses)}
         </div>;
     }
 }
@@ -44,7 +48,7 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => ({
     updateIncomeExpense: (item) => dispatch(createNewIncomeExpense(item)),
-    init: () => dispatch(initNewIncomeExpense()),
+    resetIncomeExpenses: () => dispatch(resetIncomeExpense()),
 });
 
 export const ConnectedAppContainer = connect(

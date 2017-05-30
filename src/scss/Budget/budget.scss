@@ -1,13 +1,30 @@
+@mixin addButtons {
+    // write the css here
+    width: 50%;
+    background-color: #fff;
+    padding: 1.3em 0;
+    text-align: center;
+
+    &:hover {
+            background-color: $blue;
+            color: #fff;
+            border-color: $blue;
+        }
+}
+
 .budget {
     margin: 0 $component-spacing;
 
     &__addExpense {
-        width: 48%;
+        @include addButtons();
         float: left;
+        border-radius: 5px 0 0 5px;
+        border-right: 1px solid transparent;
     }
 
     &__addIncome {
-        width: 48%;
+        @include addButtons();
         float: right;
+        border-radius: 0 5px 5px 0;
     }
 }
