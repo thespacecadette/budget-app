@@ -31,7 +31,7 @@ export class Budget extends Component {
                 updateIncomeExpense={this.props.updateIncomeExpense}
                 type={this.state.addState}
                 dismiss={() => { this.setState({ addState: false }) }} />
-            {JSON.stringify(this.props.budget.incomeExpenses)}
+            {/*{JSON.stringify(this.props.budget.incomeExpenses)}*/}
         </div>;
     }
 }
