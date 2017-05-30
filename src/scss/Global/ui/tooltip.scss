@@ -1,0 +1,26 @@
+.tooltip {
+    &__hidden {
+        display: inline-block;
+        background-color: red;
+        cursor: pointer;
+        color: #fff;
+        position: absolute;
+        z-index: 10000;
+        margin-left: $element-spacing;
+    }
+
+    &__show {
+        background-color: #333;
+        border-radius: 5px;
+        padding: $block-spacing;
+        display: inline-block;
+        width: 200px;
+        position: absolute;
+    }
+
+    &__message {
+        font-size: 12px;
+        line-height: 1.2;
+        margin-bottom: $block-spacing;
+    }
+}

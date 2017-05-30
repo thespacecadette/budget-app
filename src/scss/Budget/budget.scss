@@ -1,0 +1,13 @@
+.budget {
+    margin: 0 $component-spacing;
+
+    &__addExpense {
+        width: 48%;
+        float: left;
+    }
+
+    &__addIncome {
+        width: 48%;
+        float: right;
+    }
+}

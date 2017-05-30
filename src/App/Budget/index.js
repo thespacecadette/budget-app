@@ -1,19 +1,56 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-
-export default class Budget extends Component {
+import { connect } from 'react-redux';
+import { initNewIncomeExpense, createNewIncomeExpense } from './actions';
+import New from './components/new.jsx';
+import Notification from './../Global/ui/notification.jsx';
+export class Budget extends Component {
     constructor(props) {
         super(props);
+
+        this.state = {
+            addState: false,
+        };
+    }
+
+    addState(event) {
+        this.setState({
+            addState: event.target.name,
+        });
     }
 
     render() {
         return <div className="budget">
-            BUDGET
-            </div>;
+            <h2 className={this.state.addState ? 'hidden' : ''}>Budget</h2>
+            <Notification type="success" message={this.props.budget.status} />
+            <button className={this.state.addState ? 'hidden' : 'budget__addExpense btn btn-default btn-lg'} type="button" name="expense" onClick={this.addState.bind(this)}>Add expense</button>
+            <button className={this.state.addState ? 'hidden' : 'budget__addIncome btn btn-default btn-lg'} type="button" name="income" onClick={this.addState.bind(this)}>Add income</button>
+            <div className="clear" />
+            <New updateIncomeExpense={this.props.updateIncomeExpense} type={this.state.addState} dismiss={() => { this.setState({ addState: false }) }} />
+            {/*{JSON.stringify(this.props.budget.incomeExpenses)}*/}
+        </div>;
     }
-
 }
 
 Budget.propTypes = {
     budget: PropTypes.object,
 };
+
+const mapStateToProps = (state) => {
+    return {
+        budget: state.budget,
+    }
+};
+
+const mapDispatchToProps = (dispatch) => ({
+    updateIncomeExpense: (item) => dispatch(createNewIncomeExpense(item)),
+    init: () => dispatch(initNewIncomeExpense()),
+});
+
+export const ConnectedAppContainer = connect(
+    mapStateToProps,
+    mapDispatchToProps
+)(Budget)
+
+export default ConnectedAppContainer;
+

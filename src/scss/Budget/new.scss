@@ -1,0 +1,53 @@
+.newIncomeExpense {
+    margin-top: $component-spacing;
+    
+    &__name {
+        width: 70%;
+        float: left;
+        height: 3em;
+
+        input {
+            border-top: 0 none transparent;
+            border-left: 0 none transparent;
+            border-right: 0 none transparent;
+        }
+    }
+
+    &__amount {
+        width: calc(20% - 15px);
+        float: right;
+        margin-top: 2em;
+
+        input {
+            border-top: 0 none transparent;
+            border-left: 0 none transparent;
+            border-right: 0 none transparent;
+            font-size: 40px;
+        }
+    }
+
+    &__frequency {
+        position: relative;
+        top: -1em;
+
+        label {
+            display: block;
+            width: 70%;
+            padding: $block-spacing 0;
+        }
+
+        input {
+            margin-right: $block-spacing;
+        }
+    }
+
+    &__save {
+
+    }
+
+    &.error {
+        input[type=text], label {
+            border: 1px solid red !important;
+        }
+    }
+}

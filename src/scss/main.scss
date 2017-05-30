@@ -7,6 +7,15 @@
     font-family: Helvetica, Arial, sans-serif;
 }
 
+
+@import './vendor/bootstrap/stylesheets/bootstrap';
 @import './variables.scss';
 @import './layout.scss';
+@import './utilities.scss';
+@import './Global/typography.scss';
+@import './Global/form.scss';
 @import './Global/header.scss';
+@import './Global/ui/tooltip.scss';
+@import './Global/ui/notification.scss';
+@import './Budget/budget.scss';
+@import './Budget/new.scss';

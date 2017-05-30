@@ -1,0 +1,9 @@
+.notification {
+        cursor: pointer;
+        padding: $block-spacing;
+        margin-bottom: $component-spacing;
+
+        &__message {
+        display: inline-block;
+        }
+}

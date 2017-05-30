@@ -1,0 +1,44 @@
+$input-height: 35px;
+$form-size: 16px;
+
+fieldset {
+    border: 0 none transparent;
+}
+
+input[type=text], input[type=password] {
+    height: $input-height;
+    line-height: $input-height;
+    margin-bottom: $element-spacing;
+    text-indent: 5px;
+    border: 1px solid $border-colour;
+    color: $form-color;
+    font-size: $form-size;
+
+    &.wide {
+        width: 100%;
+    }
+}
+
+label {
+    color: $form-color;
+    font-size: 16px;
+    font-size: $form-size;
+
+    &:hover {
+            cursor: pointer;
+            background-color: yellow;
+        }
+}
+
+button {
+    // background-color: $grey;
+    // color: #fff;
+    // text-align: center;
+    // border: 0 none transparent;
+    // padding: 6px $component-spacing;
+    // border-radius: 5px;
+    // line-height: $input-height;
+    // font-size: 14px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
