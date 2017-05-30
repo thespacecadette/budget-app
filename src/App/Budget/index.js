@@ -22,7 +22,7 @@ export class Budget extends Component {
     }
 
     render() {
-        return <div className="budget">
+        return (<div className="budget">
             <h2 className={this.state.addState ? 'hidden' : ''}>Budget</h2>
             <Notification type="success" message={this.props.budget.status} />
             <button className={this.state.addState ? 'hidden' : 'budget__addExpense btn'} type="button" name="expense" onClick={this.addState.bind(this)}>Add expense</button>
@@ -30,16 +30,19 @@ export class Budget extends Component {
             <div className="clear" />
             <New
                 updateIncomeExpense={this.props.updateIncomeExpense}
+                total={this.props.budget.total}
                 type={this.state.addState}
                 isHidden={this.state.addState}
                 dismiss={() => { this.setState({ addState: false }) }} />
-            <Summary data={this.props.budget.incomeExpenses} />
-        </div>;
+            <Summary total={this.props.budget.total} data={this.props.budget.incomeExpenses} />
+        </div>);
     }
 }
 
 Budget.propTypes = {
     budget: PropTypes.object,
+    updateIncomeExpense: PropTypes.func,
+    resetIncomeExpenses: PropTypes.func,
 };
 
 const mapStateToProps = (state) => {

@@ -36,5 +36,37 @@
     &__itemAmount {
         display: inline-block;
         width: 10%;
+        padding-right: $block-spacing;
+    }
+
+    &__total {
+        padding-top: $block-spacing;        
+        padding-bottom: $block-spacing;        
+        margin-bottom: $component-spacing;
+        border-top: 1px dotted $dusk;
+        position: relative;
+
+        .summaryMask {
+            @include mask(0.5, $musk);
+        }
+    }
+
+    &__totalText {
+        color: #fff;
+        display: inline-block;
+        margin-left: $block-spacing;
+        width: calc(80% - 15px);
+        position: relative;
+        z-index: 10;
+    }
+
+    &__totalAmount {
+        display: inline-block;
+        text-align: right;
+        color: #fff;
+        font-size: 40px;
+        width: calc(20% - 15px);
+        position: relative;
+        z-index: 10;
     }
 }

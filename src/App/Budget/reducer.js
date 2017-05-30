@@ -35,7 +35,8 @@ export const fetchBudget = (state = initalState, action) => {
 
             return Object.assign({}, state, {
                 incomeExpenses: newState,
-                status: `${action.payload.item.name} has been added as an ${action.payload.item.type} to your budget.`,
+                total: action.payload.total,
+                status: action.payload.status,
             })
         case CREATE_INCOMEEXPENSE_FAIL:
             return Object.assign({}, state, {
@@ -45,6 +46,7 @@ export const fetchBudget = (state = initalState, action) => {
             return Object.assign({}, state, {
                 status: null,
             })
+
         default:
             return state
     }

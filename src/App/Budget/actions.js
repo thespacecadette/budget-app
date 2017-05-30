@@ -1,4 +1,5 @@
-import { generateUniqueKey } from './../utils/';
+import { generateUniqueKey, toNumber } from './../utils/';
+import { calculateTotal as calcTotalFunction } from './functions';
 
 export const LOAD_BUDGET = 'LOAD_BUDGET';
 export const LOAD_BUDGET_FAIL = 'LOAD_BUDGET_FAIL';
@@ -28,10 +29,12 @@ export const loadBudgetFail = () => ({
     }
 });
 
-export const createIncomeExpense = (item) => ({
+export const createIncomeExpense = (item, total) => ({
     type: CREATE_INCOMEEXPENSE,
     payload: {
-        item
+        item,
+        status: `${item.name} has been added as an ${item.type} to your budget.`,
+        total,
     }
 });
 
@@ -48,6 +51,18 @@ export const resetIncomeExpense = () => {
     };
 };
 
+export const calculateBudgetTotal = (newItem, type, total) => {
+    return dispatch => {
+        if(!newItem || !type || !total) {
+            dispatch(calculateTotalFail());
+        }
+
+        const newTotal = calcTotalFunction(newItem, type, total);
+
+        dispatch(calculateTotal(newTotal));
+    };
+};
+
 export const createNewIncomeExpense = (item) => {
     return dispatch => {
         if(!item) {
@@ -57,13 +72,14 @@ export const createNewIncomeExpense = (item) => {
         const incomeExpense = {
             incomeExpenseId,
             name: item.name,
-            amount: item.amount,            
+            amount: toNumber(item.amount),            
             frequency: item.frequency,
             desc: item.desc,
             type: item.type,
         };
-
-        dispatch(createIncomeExpense(incomeExpense))
+        const newTotal = calcTotalFunction(item, item.total);
+        
+        dispatch(createIncomeExpense(incomeExpense, newTotal))
     };
 };
 

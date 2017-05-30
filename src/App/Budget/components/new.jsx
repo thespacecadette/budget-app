@@ -53,6 +53,7 @@ export default class NewIncomeExpense extends Component {
                 desc: this.state.desc,
                 frequency: this.state.frequency,
                 type: this.props.type,
+                total: this.props.total,
             })
         }
     }
@@ -68,12 +69,12 @@ export default class NewIncomeExpense extends Component {
     render() {
         if (!this.props.type) return null;
 
-        return <div className={`newIncomeExpense ${this.state.validState}`}>
+        return (<div className={`newIncomeExpense ${this.state.validState}`}>
             <div className="newIncomeExpense__name">
                 <input value={this.state.name} onChange={this.updateItem.bind(this)} className="wide" type="text" name="name" placeholder={`Add name of ${this.props.type}`} />
             </div>
             <div className="newIncomeExpense__amount">
-                <input value={this.state.amount} onFocus={() => { this.setState({ amount: '' })}} onBlur={this.formatCurrency.bind(this)} onChange={this.updateItem.bind(this)} className="wide" type="text" name="amount" placeholder="$" />
+                <input value={this.state.amount} onFocus={() => { this.setState({ amount: '' }) }} onBlur={this.formatCurrency.bind(this)} onChange={this.updateItem.bind(this)} className="wide" type="text" name="amount" placeholder="$" />
             </div>
             <div className="clear" />
             <div className="newIncomeExpense__frequency">
@@ -88,13 +89,13 @@ export default class NewIncomeExpense extends Component {
                 </label>
             </div>
             <div className="newIncomeExpense__desc">
-                <input value={this.state.desc} onFocus={() => { this.setState({ desc: '' })}} onChange={this.updateItem.bind(this)} className="wide" type="text" name="desc" placeholder="Description" />
+                <input value={this.state.desc} onFocus={() => { this.setState({ desc: '' }) }} onChange={this.updateItem.bind(this)} className="wide" type="text" name="desc" placeholder="Description" />
             </div>
             <div className="newIncomeExpense__save">
                 <button onClick={this.save.bind(this)} className="btn btn-block newIncomeExpense__saveBtn">Save {this.props.type}</button>
                 <button onClick={this.props.dismiss} className="btn btn-block btn-danger">Cancel</button>
             </div>
-        </div>;
+        </div>);
     }
 
 }
@@ -105,6 +106,6 @@ NewIncomeExpense.propTypes = {
         PropTypes.bool
     ]),
     updateIncomeExpense: PropTypes.func.isRequired,
-    dismiss: PropTypes.func,
-    init: PropTypes.func,
+    dismiss: PropTypes.func,    
+    total: PropTypes.number,
 };

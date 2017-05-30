@@ -5,10 +5,22 @@ export const generateUniqueKey = (prefix) => {
     return `${prefix}__${id}`;
 }
 
-export const formatCurrency = (value) => {
+export const toNumber = (value) => {
     if(!value) return value;
 
     const number = Number(value.replace(/[^0-9\.-]+/g,''));
 
-    return `$ ${number}`;
+    return number;
+};
+
+export const formatCurrency = (value) => {
+    if(!value) return value;
+
+    if(isNaN(value)) {
+        const num = Number(value.replace(/[^0-9\.-]+/g,''));
+
+        return `$${number}`;
+    }
+
+    return `$${value}`;
 };
