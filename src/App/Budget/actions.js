@@ -59,6 +59,7 @@ export const createNewIncomeExpense = (item) => {
             name: item.name,
             amount: item.amount,            
             frequency: item.frequency,
+            desc: item.desc,
             type: item.type,
         };
 

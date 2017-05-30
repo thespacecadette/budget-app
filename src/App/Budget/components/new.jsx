@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import Tooltip from './../../Global/ui/tooltip.jsx';
+// import Tooltip from './../../Global/ui/tooltip.jsx';
 import { HELPER_TEXT } from './../constants';
 import { formatCurrency } from './../../utils/';
 
@@ -14,6 +14,7 @@ export default class NewIncomeExpense extends Component {
             name: '',
             amount: '',
             frequency: '',
+            desc: '',
             validState: '',
         }
     }
@@ -43,11 +44,13 @@ export default class NewIncomeExpense extends Component {
                 name: '',
                 amount: '',
                 frequency: '',
+                desc: '',
                 validState: '',
             });
             this.props.updateIncomeExpense({
                 name: this.state.name,
                 amount: this.state.amount,
+                desc: this.state.desc,
                 frequency: this.state.frequency,
                 type: this.props.type,
             })
@@ -81,11 +84,14 @@ export default class NewIncomeExpense extends Component {
                 <label>
                     <input value={this.state.frequency} onChange={this.updateItem.bind(this)} type="radio" name="frequency" value="reoccuring" />
                     Reoccuring
-                <Tooltip toggle={this.toggleHelper.bind(this)} isHidden={this.state.helperIsHidden} message={HELPER_TEXT.REOCCURING_EXPENSES} />
+                {/*<Tooltip toggle={this.toggleHelper.bind(this)} isHidden={this.state.helperIsHidden} message={HELPER_TEXT.REOCCURING_EXPENSES} />*/}
                 </label>
             </div>
+            <div className="newIncomeExpense__desc">
+                <input value={this.state.desc} onFocus={() => { this.setState({ desc: '' })}} onChange={this.updateItem.bind(this)} className="wide" type="text" name="desc" placeholder="Description" />
+            </div>
             <div className="newIncomeExpense__save">
-                <button onClick={this.save.bind(this)} className="btn btn-block btn-success">Save {this.props.type}</button>
+                <button onClick={this.save.bind(this)} className="btn btn-block newIncomeExpense__saveBtn">Save {this.props.type}</button>
                 <button onClick={this.props.dismiss} className="btn btn-block btn-danger">Cancel</button>
             </div>
         </div>;

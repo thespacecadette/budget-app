@@ -1,5 +1,4 @@
 .newIncomeExpense {
-    margin-top: $component-spacing;
     
     &__name {
         width: 70%;
@@ -7,6 +6,7 @@
         height: 3em;
 
         input {
+            background-color: transparent;
             border-top: 1px solid transparent;
             border-left: 1px solid transparent;
             border-right: 1px solid transparent;
@@ -16,36 +16,43 @@
             font-weight: normal;
             font-size: $component-spacing;
             text-transform: uppercase;
-            color: $blue;
+            color: #fff;
+        }
+    }
+
+    &__saveBtn {
+        background-color: $musk;
+        color: $light-grey;
+
+        &:hover {
+            color: #fff;
         }
     }
 
     &__amount {
         width: calc(20% - 15px);
         float: right;
-        margin-top: 2em;
 
         input {
             border-top: 1px solid transparent;
             border-left: 1px solid transparent;
             border-right: 1px solid transparent;
+            background-color: transparent;
             font-size: 40px;
             width: 100%;
             height: 70px;
+            color: #fff;
         }
     }
 
     &__frequency {
-        position: relative;
-        top: -1em;
-
         label {
-            display: block;
+            display: inline-block;
             width: 50%;
             padding: $block-spacing;
 
             &:hover {
-                color: $blue !important;
+                color: #fff;
             }
         }
 
@@ -54,8 +61,22 @@
         }
     }
 
-    &__save {
+    &__desc {
+        margin-top: $component-spacing;
+        margin-bottom: $component-spacing;
 
+        input {
+            font-size: 16px;
+            width: 100%;
+            background-color: transparent;
+
+            &:focus, 
+            &:hover {
+                border-top: 1px solid transparent;
+                border-left: 1px solid transparent;                
+                border-right: 1px solid transparent;
+            }
+        }
     }
 
     &.error {

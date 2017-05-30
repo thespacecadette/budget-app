@@ -1,6 +1,7 @@
 $input-height: 35px;
 $form-size: 16px;
 $input-hover: #f8f8f8;
+$form-color: #fff;
 
 fieldset {
     border: 0 none transparent;
@@ -15,14 +16,15 @@ input[type=text], input[type=password] {
     color: $form-color;
     font-size: $form-size;
     outline: none;
+    background-color: #fff;
+    opacity: 0.5;
 
     &:focus {
-        border: 1px solid $blue;
+        opacity: 1;
     }
 
     &:hover {
-        background-color: $input-hover;
-        border: 1px solid $blue;
+        border-bottom-color: #fff;
     }
 }
 
@@ -40,11 +42,12 @@ button {
     // background-color: $grey;
     // color: #fff;
     // text-align: center;
-    // border: 0 none transparent;
+    border: 0 none transparent;
     // padding: 6px $component-spacing;
     // border-radius: 5px;
     // line-height: $input-height;
     // font-size: 14px;
     text-transform: uppercase;
     letter-spacing: 1px;
+
 }

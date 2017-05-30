@@ -1,6 +1,9 @@
+@mixin popText {
+    text-shadow: -1px 1px 1px #fff;
+}
 
 h2 {
-    color: $grey;
+    color: #fff;
     font-size: 25px;
     margin-bottom: $component-spacing;
     border-bottom: 1px solid $border-colour;
@@ -8,3 +11,4 @@ h2 {
     text-transform: uppercase;
     letter-spacing: 1px;
 }
+
