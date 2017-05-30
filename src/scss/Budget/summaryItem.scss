@@ -1,0 +1,63 @@
+.budgetSummaryItem {
+    &__item {
+        padding-bottom: $block-spacing;
+        cursor: pointer;
+        color: #fff;
+        position: relative;
+
+        .budgetSummaryItemMask {
+                background-color: $light-grey;
+                opacity: 0.1;
+                position: absolute;
+                width: 100%;
+                height: 100%;
+                left: 0;
+                top: 0;
+            }
+        &:nth-child(even) {
+            .budgetSummaryItemMask {
+                background-color: #000;
+                opacity: 0.1;
+            }
+        }
+    }
+
+    &__item-expense {
+        padding-top: $block-spacing;            
+        padding-bottom: $block-spacing;
+
+        &:hover {
+            color: red;
+        }
+    }
+
+    &__item-income {
+        padding-top: $block-spacing;            
+        padding-bottom: $block-spacing;
+
+        &:hover {
+            color: green;
+        }
+    }
+
+    &__name {
+        display: inline-block;
+        width: 20%;
+        text-indent: $block-spacing;
+    }
+
+    &__description {
+        display: inline-block;
+        width: 50%; 
+    }
+
+    &__action {
+        display: inline-block;
+        width: 20%; 
+    }
+
+    &__amount {
+        display: inline-block;
+        width: 10%;
+    }
+}

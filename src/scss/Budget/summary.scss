@@ -1,0 +1,40 @@
+.budgetSummary {
+    padding-top: $block-spacing;    
+    margin-top: $component-spacing;
+    border-top: 1px solid $border-colour;
+
+    .well {
+        @include popText();
+        background-color: $light-grey;
+        text-align: center;
+        color: $border-colour;
+    }
+
+    &__itemHeader {
+        color: #fff;
+        border-bottom: 1px solid $border-colour;
+        padding-bottom: $block-spacing;
+        cursor: pointer;
+        font-weight: bold;
+    }
+    &__itemName {
+        display: inline-block;
+        width: 20%;
+        text-indent: $block-spacing;
+    }
+
+    &__itemDescription {
+        display: inline-block;
+        width: 50%; 
+    }
+
+    &__itemAction {
+        display: inline-block;
+        width: 20%; 
+    }
+
+    &__itemAmount {
+        display: inline-block;
+        width: 10%;
+    }
+}
