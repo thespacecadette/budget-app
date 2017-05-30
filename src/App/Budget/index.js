@@ -4,6 +4,7 @@ import { connect } from 'react-redux';
 import { resetIncomeExpense, createNewIncomeExpense } from './actions';
 import New from './components/new.jsx';
 import Notification from './../Global/ui/notification.jsx';
+import Summary from './components/summary.jsx';
 export class Budget extends Component {
     constructor(props) {
         super(props);
