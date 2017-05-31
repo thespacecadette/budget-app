@@ -69,14 +69,16 @@ export const createNewIncomeExpense = (item) => {
             dispatch(createIncomeExpenseFail());
         }
         const incomeExpenseId = generateUniqueKey(item.type);
+        const amount = toNumber(item.amount);
         const incomeExpense = {
             incomeExpenseId,
             name: item.name,
-            amount: toNumber(item.amount),            
+            amount,            
             frequency: item.frequency,
             desc: item.desc,
             type: item.type,
         };
+
         const newTotal = calcTotalFunction(item, item.total);
         
         dispatch(createIncomeExpense(incomeExpense, newTotal))

@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { SUMMARY_TEXT } from './../constants';
 import SummaryItem from './summaryItem.jsx';
+import { formatCurrency } from './../../utils/';
 export default class Summary extends Component {
     constructor(props) {
         super(props);
@@ -16,6 +17,8 @@ export default class Summary extends Component {
                 <div className="well">{SUMMARY_TEXT.NO_DATA}</div>
             </div>
         );
+
+        const formattedTotal = formatCurrency(this.props.total);
 
         return (<div className="budgetSummary">
             <div className="budgetSummary__itemHeader">
@@ -35,7 +38,7 @@ export default class Summary extends Component {
             )}
             <div className="budgetSummary__total">
                 <div className="budgetSummary__totalText">Total</div>
-                <div className="budgetSummary__totalAmount">${this.props.total}</div>
+                <div className="budgetSummary__totalAmount">{formattedTotal}</div>
                 <div className="summaryMask" />
             </div>
         </div>);
@@ -46,4 +49,8 @@ Summary.propTypes = {
     data: PropTypes.array.isRequired,    
     total: PropTypes.number.isRequired,
     isHidden: PropTypes.bool,
+};
+
+Summary.defaultProps = {
+    isHidden: false,
 };
