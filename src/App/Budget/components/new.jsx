@@ -58,23 +58,23 @@ export default class NewIncomeExpense extends Component {
         }
     }
 
-    formatCurrency(event) {
-        const formattedCurrency = formatCurrency(event.target.value);
+    // formatCurrency(event) {
+    //     const formattedCurrency = formatCurrency(event.target.value);
 
-        this.setState({
-            amount: formattedCurrency,
-        });
-    }
+    //     this.setState({
+    //         amount: formattedCurrency,
+    //     });
+    // }onBlur={this.formatCurrency.bind(this)} 
 
     render() {
         if (!this.props.type) return null;
 
         return (<div className={`newIncomeExpense ${this.state.validState}`}>
             <div className="newIncomeExpense__name">
-                <input value={this.state.name} onChange={this.updateItem.bind(this)} className="wide" type="text" name="name" placeholder={`Add name of ${this.props.type}`} />
+                <input autoFocus value={this.state.name} onChange={this.updateItem.bind(this)} className="wide" type="text" name="name" placeholder={`Add name of ${this.props.type}`} />
             </div>
             <div className="newIncomeExpense__amount">
-                <input value={this.state.amount} onFocus={() => { this.setState({ amount: '' }) }} onBlur={this.formatCurrency.bind(this)} onChange={this.updateItem.bind(this)} className="wide" type="text" name="amount" placeholder="$" />
+                <input value={this.state.amount} onFocus={() => { this.setState({ amount: '' }) }} onChange={this.updateItem.bind(this)} className="wide" type="text" name="amount" placeholder="$" />
             </div>
             <div className="clear" />
             <div className="newIncomeExpense__frequency">

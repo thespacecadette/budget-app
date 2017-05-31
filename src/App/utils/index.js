@@ -29,7 +29,8 @@ export const formatCurrency = (value) => {
         num = Number(value.replace(/[^0-9\.-]+/g, ''));
         num = num.toFixed(2);
     } else {
-        num = value.toFixed(2);
+        num = Number(value);
+        num = num.toFixed(2);
     }
 
     return `$${num}`;
