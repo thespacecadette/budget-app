@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
+import { CSSTransitionGroup } from 'react-transition-group';
 import { removeIncomeExpense, resetIncomeExpense, createNewIncomeExpense } from './actions';
 import New from './components/new.jsx';
 import Notification from './../Global/ui/notification.jsx';
@@ -22,18 +23,29 @@ export class Budget extends Component {
     }
 
     render() {
+        const newIncomeExpenseForm = this.state.addState ? (<CSSTransitionGroup
+                transitionName="budget__items"
+                transitionAppear={true}
+                transitionEnterTimeout={1000}
+                transitionAppearTimeout={1000}
+                transitionLeaveTimeout={1000}>
+                <New
+                    createIncomeExpenseItem={this.props.createIncomeExpenseItem}
+                    total={this.props.budget.total}
+                    type={this.state.addState}
+                    isHidden={this.state.addState}
+                    dismiss={() => { this.setState({ addState: false }) }} />
+            </CSSTransitionGroup>) : null;
+
         return (<div className="budget">
-            <h2 className={this.state.addState ? 'hidden' : ''}>Budget</h2>
+            <div className="budget__header">
+                <h2 className="left">Budget</h2>
+                <button className="budget__addIncome btn" type="button" name="income" onClick={this.addState.bind(this)}>Add income</button>
+                <button className="budget__addExpense btn" type="button" name="expense" onClick={this.addState.bind(this)}>Add expense</button>
+                <div className="clear" />
+            </div>
             <Notification type="success" message={this.props.budget.status} />
-            <button className={this.state.addState ? 'hidden' : 'budget__addExpense btn'} type="button" name="expense" onClick={this.addState.bind(this)}>Add expense</button>
-            <button className={this.state.addState ? 'hidden' : 'budget__addIncome btn'} type="button" name="income" onClick={this.addState.bind(this)}>Add income</button>
-            <div className="clear" />
-            <New
-                createIncomeExpenseItem={this.props.createIncomeExpenseItem}
-                total={this.props.budget.total}
-                type={this.state.addState}
-                isHidden={this.state.addState}
-                dismiss={() => { this.setState({ addState: false }) }} />
+            {newIncomeExpenseForm}
             <Summary
                 removeIncomeExpense={this.props.removeIncomeExpense}
                 total={this.props.budget.total}

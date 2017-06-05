@@ -58,14 +58,6 @@ export default class NewIncomeExpense extends Component {
         }
     }
 
-    // formatCurrency(event) {
-    //     const formattedCurrency = formatCurrency(event.target.value);
-
-    //     this.setState({
-    //         amount: formattedCurrency,
-    //     });
-    // }onBlur={this.formatCurrency.bind(this)} 
-
     render() {
         if (!this.props.type) return null;
 
@@ -92,8 +84,8 @@ export default class NewIncomeExpense extends Component {
                 <input value={this.state.desc} onFocus={() => { this.setState({ desc: '' }) }} onChange={this.updateItem.bind(this)} className="wide" type="text" name="desc" placeholder="Description" />
             </div>
             <div className="newIncomeExpense__save">
-                <button onClick={this.save.bind(this)} className="btn btn-block newIncomeExpense__saveBtn">Save {this.props.type}</button>
-                <button onClick={this.props.dismiss} className="btn btn-block btn-danger">Cancel</button>
+                <button onClick={this.save.bind(this)} className="btn newIncomeExpense__saveBtn">Save {this.props.type}</button>
+                <button onClick={this.props.dismiss} className="btn btn-danger">Cancel</button>
             </div>
         </div>);
     }

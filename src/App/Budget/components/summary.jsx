@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
+import { CSSTransitionGroup } from 'react-transition-group';
 import { SUMMARY_TEXT } from './../constants';
 import SummaryItem from './summaryItem.jsx';
 import { formatCurrency } from './../../utils/';
@@ -19,6 +20,20 @@ export default class Summary extends Component {
         );
 
         const formattedTotal = formatCurrency(this.props.total);
+        const renderItems = this.props.data.map((item, idx) => {
+            return (
+                    <SummaryItem
+                        key={`summaryItem__${idx}`}
+                        name={item.name}
+                        incomeExpenseId={item.incomeExpenseId}
+                        amount={item.amount}
+                        desc={item.desc}
+                        frequency={item.frequency}
+                        removeIncomeExpense={this.props.removeIncomeExpense}
+                        total={this.props.total}
+                        type={item.type} />
+            );
+        })
 
         return (<div className="budgetSummary">
             <div className="budgetSummary__itemHeader">
@@ -27,18 +42,12 @@ export default class Summary extends Component {
                 <div className="budgetSummary__itemAction">Action</div>
                 <div className="budgetSummary__itemAmount">Amount</div>
             </div>
-            {this.props.data && this.props.data.map((item, idx) =>
-                (<SummaryItem
-                    key={`summaryItem__${idx}`}
-                    name={item.name}
-                    incomeExpenseId={item.incomeExpenseId}
-                    amount={item.amount}
-                    desc={item.desc}
-                    frequency={item.frequency}
-                    removeIncomeExpense={this.props.removeIncomeExpense}
-                    total={this.props.total}
-                    type={item.type} />)
-            )}
+            <CSSTransitionGroup
+                transitionName="budgetSummary__items"
+                transitionEnterTimeout={1000}
+                transitionLeaveTimeout={500}>
+                {renderItems}
+            </CSSTransitionGroup>
             <div className="budgetSummary__total">
                 <div className="budgetSummary__totalText">Total</div>
                 <div className="budgetSummary__totalAmount">{formattedTotal}</div>
@@ -49,7 +58,7 @@ export default class Summary extends Component {
 }
 
 Summary.propTypes = {
-    data: PropTypes.array.isRequired,    
+    data: PropTypes.array.isRequired,
     total: PropTypes.number.isRequired,
     isHidden: PropTypes.bool,
     removeIncomeExpense: PropTypes.func.isRequired,
