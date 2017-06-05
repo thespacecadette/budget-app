@@ -1,3 +1,4 @@
+import _ from 'lodash';
 import { toNumber } from './../utils/';
 
 export const calculateTotal = (item, total) => {
@@ -14,6 +15,14 @@ export const calculateTotal = (item, total) => {
     }
 
     return newTotal;
+};
+
+export const removeIncomeExpenseItem = (incomeExpenses, incomeExpenseIdToRemove) => {
+    const newIncomeExpenses = _.remove(incomeExpenses, (item) => {
+        return item.incomeExpenseId !== incomeExpenseIdToRemove;
+    });
+
+    return newIncomeExpenses;
 };
 
 export const removeItemFromTotal = (item, total) => {

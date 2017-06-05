@@ -1,8 +1,49 @@
 import React from 'react';
-import { calculateTotal, removeItemFromTotal } from './../../../src/App/Budget/functions.js';
+import { removeIncomeExpenseItem, calculateTotal, removeItemFromTotal } from './../../../src/App/Budget/functions.js';
 import expect from 'expect';
 
 describe('Budget functions', () => {
+
+    describe('Remove item from income and expenses', () => {
+        let incomeExpenses = [{
+            incomeExpenseId: 'expense_groceries_09as0d98asd',
+            name: 'Groceries',
+            amount: 150,
+            frequency: 'ongoing',
+            type: 'expense',
+            desc: 'Vegan goodies, household things and cat food.'
+        },
+        {
+            incomeExpenseId: 'income_salary_09as0d98asd',
+            name: 'Salary',
+            amount: 2150,
+            frequency: 'ongoing',
+            type: 'income',
+            desc: 'Income from Acme Inc'
+        }];
+
+        it('should return incomeExpenses array without item', () => {
+            const itemToRemove = 'income_salary_09as0d98asd';
+
+            expect(removeIncomeExpenseItem(incomeExpenses, itemToRemove)).toEqual([
+                {
+                    incomeExpenseId: 'expense_groceries_09as0d98asd',
+                    name: 'Groceries',
+                    amount: 150,
+                    frequency: 'ongoing',
+                    type: 'expense',
+                    desc: 'Vegan goodies, household things and cat food.'
+                }
+            ]);
+        });
+
+        it('should return empty incomeExpenses array if all items removed', () => {            
+            removeIncomeExpenseItem(incomeExpenses, 'expense_groceries_09as0d98asd');
+            removeIncomeExpenseItem(incomeExpenses, 'income_salary_09as0d98asd');
+            
+            expect(incomeExpenses).toEqual([]);
+        });
+    });
 
     describe('Calculate total', () => {
         let item;

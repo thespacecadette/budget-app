@@ -1,10 +1,11 @@
+import { removeIncomeExpenseItem } from './functions';
 import {
     LOAD_BUDGET,
     LOAD_BUDGET_FAIL,
     LOAD_INCOMEEXPENSE,
     CREATE_INCOMEEXPENSE,
     CREATE_INCOMEEXPENSE_FAIL,
-    RESET_INCOMEEXPENSE,
+    RESET_INCOMEEXPENSE_STATUS,
     REMOVE_INCOMEEXPENSE,
     REMOVE_INCOMEEXPENSE_FAIL,
 } from './actions';
@@ -63,11 +64,7 @@ export const fetchBudget = (state = initalState, action) => {
                 status: action.payload.status,
             })
         case REMOVE_INCOMEEXPENSE:
-            let incomeExpenses = [];
-            
-            incomeExpenses = _.remove(state.incomeExpenses, (item) => {
-                return item.incomeExpenseId !== action.payload.incomeExpenseId;
-            });
+            const incomeExpenses = removeIncomeExpenseItem(state.incomeExpenses, action.payload.incomeExpenseId);
 
             return Object.assign({}, state, {
                 incomeExpenses,
@@ -78,7 +75,7 @@ export const fetchBudget = (state = initalState, action) => {
             return Object.assign({}, state, {
                 status: action.payload.status,
             })
-        case RESET_INCOMEEXPENSE:
+        case RESET_INCOMEEXPENSE_STATUS:
             return Object.assign({}, state, {
                 status: null,
             })

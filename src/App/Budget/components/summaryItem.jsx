@@ -25,7 +25,7 @@ export default class SummaryItem extends Component {
 SummaryItem.propTypes = {
     incomeExpenseId: PropTypes.string.isRequired,
     name: PropTypes.string.isRequired,
-    amount: PropTypes.number.isRequired,
+    amount: PropTypes.string.isRequired,
     type: PropTypes.string.isRequired,
     frequency: PropTypes.string.isRequired,
     removeIncomeExpense: PropTypes.func.isRequired,

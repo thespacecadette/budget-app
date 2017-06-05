@@ -5,7 +5,7 @@ export const LOAD_BUDGET = 'LOAD_BUDGET';
 export const LOAD_BUDGET_FAIL = 'LOAD_BUDGET_FAIL';
 export const CREATE_INCOMEEXPENSE = 'CREATE_INCOMEEXPENSE';
 export const CREATE_INCOMEEXPENSE_FAIL = 'CREATE_INCOMEEXPENSE_FAIL';
-export const RESET_INCOMEEXPENSE = 'RESET_INCOMEEXPENSE';
+export const RESET_INCOMEEXPENSE_STATUS = 'RESET_INCOMEEXPENSE_STATUS';
 export const REMOVE_INCOMEEXPENSE = 'REMOVE_INCOMEEXPENSE';
 export const REMOVE_INCOMEEXPENSE_FAIL = 'REMOVE_INCOMEEXPENSE_FAIL';
 
@@ -21,7 +21,7 @@ export const loadIncomeExpenses = () => ({
 });
 
 export const resetNewIncomeExpense = () => ({
-    type: RESET_INCOMEEXPENSE,
+    type: RESET_INCOMEEXPENSE_STATUS,
 });
 
 export const removeIncomeExpenseFail = () => ({
@@ -103,6 +103,7 @@ export const createNewIncomeExpense = (item) => {
         }
         const incomeExpenseId = generateUniqueKey(item.type);
         const amount = toNumber(item.amount);
+
         const incomeExpense = {
             incomeExpenseId,
             name: item.name,
