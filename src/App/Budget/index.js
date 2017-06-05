@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import { resetIncomeExpense, createNewIncomeExpense } from './actions';
+import { removeIncomeExpense, resetIncomeExpense, createNewIncomeExpense } from './actions';
 import New from './components/new.jsx';
 import Notification from './../Global/ui/notification.jsx';
 import Summary from './components/summary.jsx';
@@ -29,20 +29,24 @@ export class Budget extends Component {
             <button className={this.state.addState ? 'hidden' : 'budget__addIncome btn'} type="button" name="income" onClick={this.addState.bind(this)}>Add income</button>
             <div className="clear" />
             <New
-                updateIncomeExpense={this.props.updateIncomeExpense}
+                createIncomeExpenseItem={this.props.createIncomeExpenseItem}
                 total={this.props.budget.total}
                 type={this.state.addState}
                 isHidden={this.state.addState}
                 dismiss={() => { this.setState({ addState: false }) }} />
-            <Summary total={this.props.budget.total} data={this.props.budget.incomeExpenses} />
+            <Summary
+                removeIncomeExpense={this.props.removeIncomeExpense}
+                total={this.props.budget.total}
+                data={this.props.budget.incomeExpenses} />
         </div>);
     }
 }
 
 Budget.propTypes = {
     budget: PropTypes.object,
-    updateIncomeExpense: PropTypes.func,
-    resetIncomeExpenses: PropTypes.func,
+    createIncomeExpenseItem: PropTypes.func.isRequired,
+    resetIncomeExpenses: PropTypes.func.isRequired,
+    removeIncomeExpense: PropTypes.func.isRequired,
 };
 
 const mapStateToProps = (state) => {
@@ -52,8 +56,9 @@ const mapStateToProps = (state) => {
 };
 
 const mapDispatchToProps = (dispatch) => ({
-    updateIncomeExpense: (item) => dispatch(createNewIncomeExpense(item)),
+    createIncomeExpenseItem: (item) => dispatch(createNewIncomeExpense(item)),
     resetIncomeExpenses: () => dispatch(resetIncomeExpense()),
+    removeIncomeExpense: (id, amount, type, total) => dispatch(removeIncomeExpense(id, amount, type, total)),
 });
 
 export const ConnectedAppContainer = connect(

@@ -31,9 +31,12 @@ export default class Summary extends Component {
                 (<SummaryItem
                     key={`summaryItem__${idx}`}
                     name={item.name}
+                    incomeExpenseId={item.incomeExpenseId}
                     amount={item.amount}
                     desc={item.desc}
                     frequency={item.frequency}
+                    removeIncomeExpense={this.props.removeIncomeExpense}
+                    total={this.props.total}
                     type={item.type} />)
             )}
             <div className="budgetSummary__total">
@@ -49,6 +52,7 @@ Summary.propTypes = {
     data: PropTypes.array.isRequired,    
     total: PropTypes.number.isRequired,
     isHidden: PropTypes.bool,
+    removeIncomeExpense: PropTypes.func.isRequired,
 };
 
 Summary.defaultProps = {

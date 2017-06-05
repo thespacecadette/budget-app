@@ -47,7 +47,7 @@ export default class NewIncomeExpense extends Component {
                 desc: '',
                 validState: '',
             });
-            this.props.updateIncomeExpense({
+            this.props.createIncomeExpenseItem({
                 name: this.state.name,
                 amount: this.state.amount,
                 desc: this.state.desc,
@@ -105,7 +105,7 @@ NewIncomeExpense.propTypes = {
         PropTypes.string,
         PropTypes.bool
     ]),
-    updateIncomeExpense: PropTypes.func.isRequired,
+    createIncomeExpenseItem: PropTypes.func.isRequired,
     dismiss: PropTypes.func,    
     total: PropTypes.number,
 };
