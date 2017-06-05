@@ -17,17 +17,13 @@
     &__item-expense {
         padding-top: $block-spacing;            
         padding-bottom: $block-spacing;
-
-        &:hover {
-            color: red;
-        }
     }
 
     &__item-income {
-        padding-top: $block-spacing;            
+        padding-top: $block-spacing;
         padding-bottom: $block-spacing;
 
-        &:hover {
+        .budgetSummaryItem__amount {
             color: green;
         }
     }
@@ -40,10 +36,15 @@
 
     &__description {
         display: inline-block;
-        width: 50%; 
+        width: 40%; 
     }
 
     &__action {
+        display: inline-block;
+        width: 10%; 
+    }
+
+    &__date {
         display: inline-block;
         width: 20%; 
     }

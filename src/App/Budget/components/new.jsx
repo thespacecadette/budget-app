@@ -98,6 +98,6 @@ NewIncomeExpense.propTypes = {
         PropTypes.bool
     ]),
     createIncomeExpenseItem: PropTypes.func.isRequired,
-    dismiss: PropTypes.func,    
+    dismiss: PropTypes.func,
     total: PropTypes.number,
 };

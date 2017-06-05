@@ -103,10 +103,12 @@ export const createNewIncomeExpense = (item) => {
         }
         const incomeExpenseId = generateUniqueKey(item.type);
         const amount = toNumber(item.amount);
+        const dateTimeAdded = new Date();
 
         const incomeExpense = {
             incomeExpenseId,
             name: item.name,
+            dateTimeAdded,
             amount,            
             frequency: item.frequency,
             desc: item.desc,

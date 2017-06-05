@@ -10,7 +10,7 @@ expect.extend(enzymify);
 describe('Add income/expense screen', () => {
     let props = {
         type: 'income',
-        updateIncomeExpense: () => { },
+        createIncomeExpenseItem: () => { },
         dismiss: () => { },
         init: () => { },
     };
@@ -19,7 +19,7 @@ describe('Add income/expense screen', () => {
         // Teardown
         props = {
             type: 'income',
-            updateIncomeExpense: () => { },
+            createIncomeExpenseItem: () => { },
             dismiss: () => { },
             init: () => { },
         };

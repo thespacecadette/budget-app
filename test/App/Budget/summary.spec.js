@@ -44,7 +44,8 @@ describe('Summary', () => {
             props.data = [
                 {
                     name: 'Groceries',
-                    amount: 902.30,
+                    amount: '902.30',
+                    dateTimeAdded: 'dateTimeRecorded',
                     desc: 'Description of food',
                     frequency: 'oneoff',
                     type: 'expense',
@@ -52,7 +53,8 @@ describe('Summary', () => {
                 },
                 {
                     name: 'Rent',
-                    amount: 2000,
+                    amount: '2000',
+                    dateTimeAdded: 'dateTimeRecorded',
                     desc: 'Roof over head',
                     frequency: 'reoccuring',
                     type: 'income',
@@ -71,7 +73,8 @@ describe('Summary', () => {
             props.data = [
                 {
                     name: 'Groceries',
-                    amount: 902.30,
+                    amount: '902.30',
+                    dateTimeAdded: 'dateTimeRecorded',
                     desc: 'Description of food',
                     frequency: 'oneoff',
                     type: 'expense',
@@ -88,7 +91,8 @@ describe('Summary', () => {
             props.data = [
                 {
                     name: 'Groceries',
-                    amount: 0,
+                    amount: '150.00',
+                    dateTimeAdded: 'dateTimeRecorded',
                     desc: 'Description of food',
                     frequency: 'oneoff',
                     type: 'expense',
@@ -105,7 +109,8 @@ describe('Summary', () => {
             props.data = [
                 {
                     name: 'Groceries',
-                    amount: 0,
+                    amount: '150.00',
+                    dateTimeAdded: 'dateTimeRecorded',
                     desc: 'Description of food',
                     frequency: 'oneoff',
                     type: 'expense',
@@ -122,7 +127,8 @@ describe('Summary', () => {
             props.data = [
                 {
                     name: 'Groceries',
-                    amount: 0,
+                    amount: '150.00',
+                    dateTimeAdded: 'dateTimeRecorded',
                     desc: 'Description of food',
                     frequency: 'oneoff',
                     type: 'expense',

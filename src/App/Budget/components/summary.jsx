@@ -29,6 +29,7 @@ export default class Summary extends Component {
                         amount={item.amount}
                         desc={item.desc}
                         frequency={item.frequency}
+                        dateTimeAdded={item.dateTimeAdded}
                         removeIncomeExpense={this.props.removeIncomeExpense}
                         total={this.props.total}
                         type={item.type} />
@@ -39,6 +40,7 @@ export default class Summary extends Component {
             <div className="budgetSummary__itemHeader">
                 <div className="budgetSummary__itemName">Name</div>
                 <div className="budgetSummary__itemDescription">Description</div>
+                <div className="budgetSummary__itemDate">Date</div>
                 <div className="budgetSummary__itemAction">Action</div>
                 <div className="budgetSummary__itemAmount">Amount</div>
             </div>

@@ -11,7 +11,8 @@ describe('Summary item', () => {
     let props = {
         incomeExpenseId: 'expense__test__234234',
         name: 'Test',
-        amount: 234.234,
+        dateTimeAdded: 'dateTimeRecorded',
+        amount: '234.234',
         frequency: 'oneoff',
         desc: 'Some texty pants',
         total: 0,
@@ -24,7 +25,8 @@ describe('Summary item', () => {
         props = {
             incomeExpenseId: 'expense__test__234234',
             name: 'Test',
-            amount: 234.234,
+            dateTimeAdded: 'dateTimeRecorded',
+            amount: '234.234',
             frequency: 'oneoff',
             desc: 'Some texty pants',
             total: 0,
@@ -48,14 +50,14 @@ describe('Summary item', () => {
         });
 
         it('should render formatted amount if negative value', () => {
-            props.amount = -234.234;
+            props.amount = '-234.234';
             const summary = render(<SummaryItem {...props} />);
 
             expect(summary.find('.budgetSummaryItem__amount').text()).toBe('$-234.23');
         });
 
         it('should render formatted amount if 0 value', () => {
-            props.amount = -0;
+            props.amount = '-0';
             const summary = render(<SummaryItem {...props} />);
 
             expect(summary.find('.budgetSummaryItem__amount').text()).toBe('$0.00');
