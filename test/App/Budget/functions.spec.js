@@ -1,27 +1,23 @@
 import React from 'react';
-import { calculateTotal } from './../../../src/App/Budget/functions.js';
+import { calculateTotal, removeItemFromTotal } from './../../../src/App/Budget/functions.js';
 import expect from 'expect';
 
 describe('Budget functions', () => {
-    let item = {
-        name: 'test',
-        amount: 10.511,
-        desc: 'test',
-        frequency: 'ongoing',
-        type: 'income'
-    };
-
-    afterEach(() => {
-        item = {
-            name: 'test',
-            amount: 10.511,
-            desc: 'test',
-            frequency: 'ongoing',
-            type: 'income'
-        };
-    });
 
     describe('Calculate total', () => {
+        let item;
+
+        beforeEach(() => {
+            item = {
+                name: 'test',
+                amount: 10.511,
+                desc: 'test',
+                frequency: 'ongoing',
+                type: 'income',
+                incomeExpenseId: 'expense__test__234234',
+            };
+        });
+
         describe('Income', () => {
 
             it('should return total amount', () => {
@@ -52,6 +48,19 @@ describe('Budget functions', () => {
         });
 
         describe('Expenses', () => {
+            let props;
+
+            beforeEach(() => {
+                item = {
+                    name: 'test',
+                    amount: 10.511,
+                    desc: 'test',
+                    frequency: 'ongoing',
+                    type: 'income',
+                    incomeExpenseId: 'expense__test__234234',
+                };
+            });
+
             it('should return total amount', () => {
                 item.type = 'expense';
                 const total = 15;
@@ -81,6 +90,39 @@ describe('Budget functions', () => {
                 expect(calculateTotal(item, total)).toBe(1);
             });
 
+        });
+
+    });
+
+    describe('Remove item from total', () => {
+        let itemToBeRemoved;
+
+        beforeEach(() => {
+            itemToBeRemoved = {
+                name: 'test',
+                amount: 120.50,
+                desc: 'test',
+                frequency: 'ongoing',
+                type: 'income',
+                incomeExpenseId: 'expense__test__234234',
+            };
+        });
+
+        describe('Income', () => {
+            it('should return total amount minus removed income', () => {
+                const total = 1200;
+
+                expect(removeItemFromTotal(itemToBeRemoved, total)).toBe(1079.5);
+            });
+        });
+
+        describe('Expenses', () => {
+            it('should return total amount removed added expense', () => {
+                itemToBeRemoved.type = 'expense';
+                const total = 1020;
+
+                expect(removeItemFromTotal(itemToBeRemoved, total)).toBe(1140.5);
+            });
         });
 
     });

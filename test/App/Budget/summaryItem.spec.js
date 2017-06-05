@@ -9,23 +9,27 @@ expect.extend(enzymify);
 
 describe('Summary item', () => {
     let props = {
+        incomeExpenseId: 'expense__test__234234',
         name: 'Test',
-        amount: 234.234,        
+        amount: 234.234,
         frequency: 'oneoff',
         desc: 'Some texty pants',
         total: 0,
         type: 'expense',
+        removeIncomeExpense: () => { },
     };
 
     afterEach(() => {
         // Teardown
         props = {
+            incomeExpenseId: 'expense__test__234234',
             name: 'Test',
-            amount: 234.234,        
+            amount: 234.234,
             frequency: 'oneoff',
             desc: 'Some texty pants',
             total: 0,
-            type: 'expense'
+            type: 'expense',
+            removeIncomeExpense: () => { },
         };
     });
 

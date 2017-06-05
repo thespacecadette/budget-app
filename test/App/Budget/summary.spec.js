@@ -13,6 +13,7 @@ describe('Summary', () => {
         data: [],
         total: 0,
         isHidden: false,
+        removeIncomeExpense: () => { },
     };
 
     afterEach(() => {
@@ -21,6 +22,7 @@ describe('Summary', () => {
             data: [],
             total: 0,
             isHidden: false,
+            removeIncomeExpense: () => { },
         };
     });
 
@@ -45,14 +47,16 @@ describe('Summary', () => {
                     amount: 902.30,
                     desc: 'Description of food',
                     frequency: 'oneoff',
-                    type: 'expense'
+                    type: 'expense',
+                    incomeExpenseId: 'expense__test__234234',
                 },
                 {
                     name: 'Rent',
                     amount: 2000,
                     desc: 'Roof over head',
                     frequency: 'reoccuring',
-                    type: 'income'
+                    type: 'income',
+                    incomeExpenseId: 'income__test__234234',
                 }
             ];
 
@@ -70,7 +74,8 @@ describe('Summary', () => {
                     amount: 902.30,
                     desc: 'Description of food',
                     frequency: 'oneoff',
-                    type: 'expense'
+                    type: 'expense',
+                    incomeExpenseId: 'expense__test__234234',
                 }
             ];
             props.total = 234.923;
@@ -86,7 +91,8 @@ describe('Summary', () => {
                     amount: 0,
                     desc: 'Description of food',
                     frequency: 'oneoff',
-                    type: 'expense'
+                    type: 'expense',
+                    incomeExpenseId: 'expense__test__234234',
                 }
             ];
             props.total = 0;
@@ -102,7 +108,8 @@ describe('Summary', () => {
                     amount: 0,
                     desc: 'Description of food',
                     frequency: 'oneoff',
-                    type: 'expense'
+                    type: 'expense',
+                    incomeExpenseId: 'expense__test__234234',
                 }
             ];
             props.total = -234.923;
@@ -118,7 +125,8 @@ describe('Summary', () => {
                     amount: 0,
                     desc: 'Description of food',
                     frequency: 'oneoff',
-                    type: 'expense'
+                    type: 'expense',
+                    incomeExpenseId: 'expense__test__234234',
                 }
             ];
             props.total = -234.3;
