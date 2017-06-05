@@ -54,6 +54,7 @@ export default class NewIncomeExpense extends Component {
                 frequency: this.state.frequency,
                 type: this.props.type,
                 total: this.props.total,
+                totalExpenses: this.props.totalExpenses,
             })
         }
     }
@@ -99,5 +100,6 @@ NewIncomeExpense.propTypes = {
     ]),
     createIncomeExpenseItem: PropTypes.func.isRequired,
     dismiss: PropTypes.func,
-    total: PropTypes.number,
+    total: PropTypes.number,    
+    totalExpenses: PropTypes.number,
 };

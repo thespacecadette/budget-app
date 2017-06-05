@@ -13,6 +13,7 @@ describe('Budget', () => {
         budget: {
             status: null,
             total: 0,
+            totalExpenses: 0,
             incomeExpenses: [],
             budgetId: '',
         },
@@ -26,6 +27,7 @@ describe('Budget', () => {
             status: null,
             incomeExpenses: [],
             total: 0,
+            totalExpenses: 0,
         }
     };
     const store = mockStore(initialState);

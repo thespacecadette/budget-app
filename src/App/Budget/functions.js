@@ -1,10 +1,10 @@
 import _ from 'lodash';
 import { toNumber } from './../utils/';
 
-export const calculateTotal = (item, total) => {
+export const calculateTotal = (item) => {
     const addToTotal = item.type === 'income';
     const amountNumber = toNumber(item.amount);
-    const totalNumber = toNumber(total);
+    const totalNumber = toNumber(item.total);
 
     let newTotal = 0;
 
@@ -17,6 +17,20 @@ export const calculateTotal = (item, total) => {
     return newTotal;
 };
 
+export const calcTotalExpenses = (item) => {
+    const addToExpenses = item.type === 'expense';
+    let newTotalExpenses = item.totalExpenses;
+
+    if (addToExpenses) {
+        const amountNumber = toNumber(item.amount);
+        const totalNumber = toNumber(item.totalExpenses);
+
+        newTotalExpenses = Number(Number(totalNumber) + Number(amountNumber));
+    }
+
+    return newTotalExpenses;
+};
+
 export const removeIncomeExpenseItem = (incomeExpenses, incomeExpenseIdToRemove) => {
     const newIncomeExpenses = _.remove(incomeExpenses, (item) => {
         return item.incomeExpenseId !== incomeExpenseIdToRemove;
@@ -24,6 +38,7 @@ export const removeIncomeExpenseItem = (incomeExpenses, incomeExpenseIdToRemove)
 
     return newIncomeExpenses;
 };
+
 
 export const removeItemFromTotal = (item, total) => {
     const addToTotal = item.type === 'expense';
@@ -39,4 +54,18 @@ export const removeItemFromTotal = (item, total) => {
     }
 
     return newTotal;
-}
+};
+
+export const removeItemFromTotalExpenses = (item, totalExpenses) => {
+    const removeFromTotalExpenses = item.type === 'expense';
+    let newTotalExpenses = totalExpenses;
+
+    if (removeFromTotalExpenses) {
+        const amountNumber = toNumber(item.amount);
+        const totalNumber = toNumber(totalExpenses);
+
+        newTotalExpenses = Number(Number(totalNumber) - Number(amountNumber));
+    }
+
+    return newTotalExpenses;
+};

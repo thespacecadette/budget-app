@@ -16,6 +16,7 @@ describe('Summary item', () => {
         frequency: 'oneoff',
         desc: 'Some texty pants',
         total: 0,
+        totalExpenses: 0,
         type: 'expense',
         removeIncomeExpense: () => { },
     };
@@ -30,6 +31,7 @@ describe('Summary item', () => {
             frequency: 'oneoff',
             desc: 'Some texty pants',
             total: 0,
+            totalExpenses: 0,
             type: 'expense',
             removeIncomeExpense: () => { },
         };

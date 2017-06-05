@@ -32,6 +32,7 @@ export class Budget extends Component {
                 <New
                     createIncomeExpenseItem={this.props.createIncomeExpenseItem}
                     total={this.props.budget.total}
+                    totalExpenses={this.props.budget.totalExpenses}
                     type={this.state.addState}
                     isHidden={this.state.addState}
                     dismiss={() => { this.setState({ addState: false }) }} />
@@ -49,6 +50,7 @@ export class Budget extends Component {
             <Summary
                 removeIncomeExpense={this.props.removeIncomeExpense}
                 total={this.props.budget.total}
+                totalExpenses={this.props.budget.totalExpenses}
                 data={this.props.budget.incomeExpenses} />
         </div>);
     }
@@ -70,7 +72,7 @@ const mapStateToProps = (state) => {
 const mapDispatchToProps = (dispatch) => ({
     createIncomeExpenseItem: (item) => dispatch(createNewIncomeExpense(item)),
     resetIncomeExpenses: () => dispatch(resetIncomeExpense()),
-    removeIncomeExpense: (id, amount, type, total) => dispatch(removeIncomeExpense(id, amount, type, total)),
+    removeIncomeExpense: (id, amount, type, total, totalExpenses) => dispatch(removeIncomeExpense(id, amount, type, total, totalExpenses)),
 });
 
 export const ConnectedAppContainer = connect(

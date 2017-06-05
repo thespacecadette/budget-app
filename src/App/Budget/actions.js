@@ -1,5 +1,5 @@
 import { generateUniqueKey, toNumber } from './../utils/';
-import { removeItemFromTotal, calculateTotal as calcTotalFunction } from './functions';
+import { removeItemFromTotalExpenses, removeItemFromTotal, calcTotalExpenses, calculateTotal as calcTotalFunction } from './functions';
 
 export const LOAD_BUDGET = 'LOAD_BUDGET';
 export const LOAD_BUDGET_FAIL = 'LOAD_BUDGET_FAIL';
@@ -38,21 +38,23 @@ export const loadBudgetFail = () => ({
     }
 });
 
-export const createIncomeExpense = (item, total) => ({
+export const createIncomeExpense = (item, total, totalExpenses) => ({
     type: CREATE_INCOMEEXPENSE,
     payload: {
         item,
         status: `${item.name} has been added as an ${item.type} to your budget.`,
         total,
+        totalExpenses,
     }
 });
 
-export const removeIncomeExpenseItem = (incomeExpenseId, total) => ({
+export const removeIncomeExpenseItem = (incomeExpenseId, total, totalExpenses) => ({
     type: REMOVE_INCOMEEXPENSE,
     payload: {
         status: `${incomeExpenseId} has been removed from your budget.`,
         total,
         incomeExpenseId,
+        totalExpenses,
     }
 });
 
@@ -69,7 +71,7 @@ export const resetIncomeExpense = () => {
     };
 };
 
-export const removeIncomeExpense = (incomeExpenseId, amount, type, total) => {
+export const removeIncomeExpense = (incomeExpenseId, amount, type, total, totalExpenses) => {
     return dispatch => {
         if(!incomeExpenseId || !amount || !type || !total) {
             dispatch(removeIncomeExpenseFail());
@@ -80,7 +82,12 @@ export const removeIncomeExpense = (incomeExpenseId, amount, type, total) => {
             type,
         }, total);
 
-        dispatch(removeIncomeExpenseItem(incomeExpenseId, newTotal));
+        const newExpenseTotal = removeItemFromTotalExpenses({
+            amount,
+            type,
+        }, totalExpenses);
+        
+        dispatch(removeIncomeExpenseItem(incomeExpenseId, newTotal, newExpenseTotal));
     };
 };
 
@@ -115,9 +122,10 @@ export const createNewIncomeExpense = (item) => {
             type: item.type,
         };
 
-        const newTotal = calcTotalFunction(item, item.total);
+        const newTotal = calcTotalFunction(item);
+        const newExpenseTotal = calcTotalExpenses(item);
         
-        dispatch(createIncomeExpense(incomeExpense, newTotal))
+        dispatch(createIncomeExpense(incomeExpense, newTotal, newExpenseTotal))
     };
 };
 

@@ -9,18 +9,14 @@ import sinon from 'sinon';
 expect.extend(enzymify);
 
 describe('Summary', () => {
-    let props = {
-        data: [],
-        total: 0,
-        isHidden: false,
-        removeIncomeExpense: () => { },
-    };
+    let props = {};
 
-    afterEach(() => {
+    beforeEach(() => {
         // Teardown
         props = {
             data: [],
             total: 0,
+            totalExpenses: 0,
             isHidden: false,
             removeIncomeExpense: () => { },
         };
@@ -139,6 +135,80 @@ describe('Summary', () => {
             const summary = render(<Summary {...props} />);
 
             expect(summary.find('.budgetSummary__totalAmount').text()).toBe('$-234.30');
+        });
+    });
+
+    describe('Total Expenses', () => {
+        it('should render total if more than 2 floating point decimals', () => {
+            props.data = [
+                {
+                    name: 'Groceries',
+                    amount: '902.30',
+                    dateTimeAdded: 'dateTimeRecorded',
+                    desc: 'Description of food',
+                    frequency: 'oneoff',
+                    type: 'expense',
+                    incomeExpenseId: 'expense__test__234234',
+                }
+            ];
+            props.totalExpenses = 234.923;
+            const summary = render(<Summary {...props} />);
+
+            expect(summary.find('.budgetSummary__totalExpenses').text()).toBe('$234.92');
+        });
+
+        it('should render total if 0', () => {
+            props.data = [
+                {
+                    name: 'Groceries',
+                    amount: '150.00',
+                    dateTimeAdded: 'dateTimeRecorded',
+                    desc: 'Description of food',
+                    frequency: 'oneoff',
+                    type: 'expense',
+                    incomeExpenseId: 'expense__test__234234',
+                }
+            ];
+            props.totalExpenses = 0;
+            const summary = render(<Summary {...props} />);
+
+            expect(summary.find('.budgetSummary__totalExpenses').text()).toBe('$0.00');
+        });
+
+        it('should render total if a negative value', () => {
+            props.data = [
+                {
+                    name: 'Groceries',
+                    amount: '150.00',
+                    dateTimeAdded: 'dateTimeRecorded',
+                    desc: 'Description of food',
+                    frequency: 'oneoff',
+                    type: 'expense',
+                    incomeExpenseId: 'expense__test__234234',
+                }
+            ];
+            props.totalExpenses = -234.923;
+            const summary = render(<Summary {...props} />);
+
+            expect(summary.find('.budgetSummary__totalExpenses').text()).toBe('$-234.92');
+        });
+
+        it('should render total to two decimal places', () => {
+            props.data = [
+                {
+                    name: 'Groceries',
+                    amount: '150.00',
+                    dateTimeAdded: 'dateTimeRecorded',
+                    desc: 'Description of food',
+                    frequency: 'oneoff',
+                    type: 'expense',
+                    incomeExpenseId: 'expense__test__234234',
+                }
+            ];
+            props.totalExpenses = -234.3;
+            const summary = render(<Summary {...props} />);
+
+            expect(summary.find('.budgetSummary__totalExpenses').text()).toBe('$-234.30');
         });
     });
 });

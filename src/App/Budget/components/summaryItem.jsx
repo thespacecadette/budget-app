@@ -18,7 +18,7 @@ export default class SummaryItem extends Component {
             <div className="budgetSummaryItem__description">{this.props.desc}</div>
             <div className="budgetSummaryItem__date">{formattedDate}</div>
             <div className="budgetSummaryItem__action">
-                <a href="#" onClick={this.props.removeIncomeExpense.bind(this, this.props.incomeExpenseId, this.props.amount, this.props.type, this.props.total)}>Remove</a>
+                <a href="#" onClick={this.props.removeIncomeExpense.bind(this, this.props.incomeExpenseId, this.props.amount, this.props.type, this.props.total, this.props.totalExpenses)}>Remove</a>
             </div>
             <div className="budgetSummaryItem__amount">{formattedAmount}</div>
             {/*<div className="budgetSummaryItemMask" />*/}
@@ -28,6 +28,8 @@ export default class SummaryItem extends Component {
 
 SummaryItem.propTypes = {
     incomeExpenseId: PropTypes.string.isRequired,
+    total: PropTypes.number.isRequired,    
+    totalExpenses: PropTypes.number.isRequired,
     dateTimeAdded: PropTypes.string.isRequired,
     name: PropTypes.string.isRequired,
     amount: PropTypes.string.isRequired,

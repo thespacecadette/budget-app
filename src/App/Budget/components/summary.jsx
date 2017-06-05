@@ -20,19 +20,21 @@ export default class Summary extends Component {
         );
 
         const formattedTotal = formatCurrency(this.props.total);
+        const formattedTotalExpenses = formatCurrency(this.props.totalExpenses);
         const renderItems = this.props.data.map((item, idx) => {
             return (
-                    <SummaryItem
-                        key={`summaryItem__${idx}`}
-                        name={item.name}
-                        incomeExpenseId={item.incomeExpenseId}
-                        amount={item.amount}
-                        desc={item.desc}
-                        frequency={item.frequency}
-                        dateTimeAdded={item.dateTimeAdded}
-                        removeIncomeExpense={this.props.removeIncomeExpense}
-                        total={this.props.total}
-                        type={item.type} />
+                <SummaryItem
+                    key={`summaryItem__${idx}`}
+                    name={item.name}
+                    incomeExpenseId={item.incomeExpenseId}
+                    amount={item.amount}
+                    desc={item.desc}
+                    frequency={item.frequency}
+                    dateTimeAdded={item.dateTimeAdded}
+                    removeIncomeExpense={this.props.removeIncomeExpense}
+                    total={this.props.total}
+                    totalExpenses={this.props.totalExpenses}
+                    type={item.type} />
             );
         })
 
@@ -51,7 +53,10 @@ export default class Summary extends Component {
                 {renderItems}
             </CSSTransitionGroup>
             <div className="budgetSummary__total">
-                <div className="budgetSummary__totalText">Total</div>
+                <div className="budgetSummary__totalText">Total expenses</div>
+                <div className="budgetSummary__totalExpenses">{formattedTotalExpenses}</div>
+                <div className="clear" />
+                <div className="budgetSummary__totalText">Remaining</div>
                 <div className="budgetSummary__totalAmount">{formattedTotal}</div>
                 <div className="summaryMask" />
             </div>
@@ -61,7 +66,8 @@ export default class Summary extends Component {
 
 Summary.propTypes = {
     data: PropTypes.array.isRequired,
-    total: PropTypes.number.isRequired,
+    total: PropTypes.number.isRequired,    
+    totalExpenses: PropTypes.number.isRequired,
     isHidden: PropTypes.bool,
     removeIncomeExpense: PropTypes.func.isRequired,
 };

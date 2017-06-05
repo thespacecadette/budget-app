@@ -57,6 +57,7 @@ export const fetchBudget = (state = initalState, action) => {
             return Object.assign({}, state, {
                 incomeExpenses: newState,
                 total: action.payload.total,
+                totalExpenses: action.payload.totalExpenses,
                 status: action.payload.status,
             })
         case CREATE_INCOMEEXPENSE_FAIL:
@@ -69,6 +70,7 @@ export const fetchBudget = (state = initalState, action) => {
             return Object.assign({}, state, {
                 incomeExpenses,
                 total: action.payload.total,
+                totalExpenses: action.payload.totalExpenses,
                 status: action.payload.status,
             })
         case REMOVE_INCOMEEXPENSE_FAIL:
