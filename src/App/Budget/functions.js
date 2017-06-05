@@ -8,9 +8,9 @@ export const calculateTotal = (item, total) => {
     let newTotal = 0;
 
     if (addToTotal) {
-        newTotal = Number(totalNumber) + Number(amountNumber);
+        newTotal = Number(Number(totalNumber) + Number(amountNumber));
     } else {
-        newTotal = Number(totalNumber) - Number(amountNumber);
+        newTotal = Number(Number(totalNumber) - Number(amountNumber));
     }
 
     return newTotal;
