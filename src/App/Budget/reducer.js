@@ -12,9 +12,10 @@ import {
 
 const initalState = {
     budgetId: '',
-    status: null,
+    status: '',
     incomeExpenses: [],
     total: 0,
+    totalExpenses: 0,
     // incomeExpenses: [{
     //     incomeExpenseId: 'expense_groceries_09as0d98asd',
     //     name: 'Groceries',

@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import moment from 'moment';
 import { formatCurrency } from './../../utils';
-import DropDownButton from './../../Global/ui/dropDownButton.jsx';
+// import DropDownButton from './../../Global/ui/dropDownButton.jsx';
 
 export default class SummaryItem extends Component {
     constructor(props) {

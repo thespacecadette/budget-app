@@ -74,4 +74,5 @@ Summary.propTypes = {
 
 Summary.defaultProps = {
     isHidden: false,
+    totalExpenses: 0,
 };
