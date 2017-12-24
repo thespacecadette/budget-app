@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import Header from './Global/Header.jsx';
 import Budget from './Budget/index.js';
-import Reporting from './Reports/index.js';
+// import Reporting from './Reports/index.js';
 
 export class App extends Component {
     constructor(props) {
@@ -12,7 +12,7 @@ export class App extends Component {
     render() {
         return (<div className="app">
             <Header username={this.props.user.name} />
-            <Reporting />
+            <Budget />
         </div>
         );
     }

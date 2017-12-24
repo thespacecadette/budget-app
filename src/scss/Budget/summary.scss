@@ -1,0 +1,112 @@
+.budgetSummary {
+    padding-top: $block-spacing;    
+    margin-top: $component-spacing;
+
+    &__items {
+        display: inline-block;
+    }
+
+    &__items-enter {
+        opacity: 0;
+        transform:   translate(-250px,0);
+        transform: translate3d(-250px,0,0);
+    }
+
+    &__items-enter-active {
+        opacity: 1;
+        transition: opacity 1s ease;
+        transform:   translate(0,0);
+        transform: translate3d(0,0,0);
+        transition-property: transform, opacity;
+        transition-duration: 300ms;
+        transition-timing-function: cubic-bezier(0.175, 0.665, 0.320, 1), linear;
+    }
+
+    &__items-leave {
+        opacity: 1;
+        transform:   translate(0,0,0);
+        transform: translate3d(0,0,0);
+        transition-property: transform, opacity;
+        transition-duration: 300ms;
+        transition-timing-function: cubic-bezier(0.175, 0.665, 0.320, 1), linear;
+    }
+
+    &__items-leave-active {
+        opacity: 0;
+        transform:   translate(250px,0);
+        transform: translate3d(250px,0,0);
+    }
+
+    .well {
+        @include popText();
+        background-color: $light-grey;
+        text-align: center;
+        color: #999;
+    }
+
+    &__itemHeader {
+        color: #fff;
+        border-bottom: 1px solid $border-colour;
+        padding-bottom: $block-spacing;
+        cursor: pointer;
+        font-weight: bold;
+    }
+    &__itemName {
+        display: inline-block;
+        width: 20%;
+        text-indent: $block-spacing;
+    }
+
+    &__itemDescription {
+        display: inline-block;
+        width: 40%; 
+    }
+
+    &__itemAction {
+        display: inline-block;
+        width: 10%; 
+    }
+
+    &__itemDate {
+        display: inline-block;
+        width: 20%;
+    }
+
+    &__itemAmount {
+        display: inline-block;
+        text-align: right;
+        width: 10%;
+        padding-right: $block-spacing;
+    }
+
+    &__total {
+        padding-top: $block-spacing;        
+        padding-bottom: $block-spacing;        
+        margin-bottom: $component-spacing;
+        border-top: 1px dotted $dusk;
+        position: relative;
+
+        .summaryMask {
+            @include mask(0.5, $musk);
+        }
+    }
+
+    &__totalText {
+        color: #fff;
+        display: inline-block;
+        margin-left: $block-spacing;
+        width: calc(80% - 15px);
+        position: relative;
+        z-index: 10;
+    }
+
+    &__totalExpenses,
+    &__totalAmount {
+        display: inline-block;
+        text-align: right;
+        color: #fff;
+        width: calc(20% - 15px);
+        position: relative;
+        z-index: 10;
+    }
+}

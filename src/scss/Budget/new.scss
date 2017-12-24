@@ -1,0 +1,76 @@
+.newIncomeExpense {
+    width: 80%;
+    margin-left: 10%;
+    margin-top: 10%;
+
+    &__name {
+        width: 70%;
+        float: left;
+
+        input {
+            background-color: transparent;
+            width: 100%;
+            height: $component-spacing;
+            text-indent: $element-spacing;
+            font-weight: normal;
+            font-size: $block-spacing;
+            color: #fff;
+        }
+    }
+
+    &__saveBtn {
+        background-color: $musk;
+        color: $light-grey;
+        float: right;
+
+        &:hover {
+            color: #fff;
+        }
+    }
+
+    &__amount {
+        width: calc(20% - 15px);
+        float: right;
+
+        input {
+            background-color: transparent;
+            font-size: $block-spacing;
+            width: 100%;
+            height: $component-spacing;
+            color: #fff;
+        }
+    }
+
+    &__frequency {
+        label {
+            display: inline-block;
+            width: 50%;
+            padding: $block-spacing;
+
+            &:hover {
+                color: #fff;
+            }
+        }
+
+        input {
+            margin-right: $block-spacing;
+        }
+    }
+
+    &__desc {
+        margin-top: $component-spacing;
+        margin-bottom: $component-spacing;
+
+        input {
+            font-size: $block-spacing;
+            width: 100%;
+            background-color: transparent;
+        }
+    }
+
+    &.error {
+        input[type=text], label {
+            border: 1px solid red !important;
+        }
+    }
+}

@@ -19,13 +19,13 @@ export class Settings extends Component {
     render() {
         return (<div className="settings">
             <div className={this.state.toggle ? 'dropdown open' : 'dropdown'}>
-            <button className="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded={this.state.toggle} onClick={() => {
+            <a className="dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded={this.state.toggle} onClick={() => {
                 this.setState({
                     toggle: !this.state.toggle
                 })
             }}>
               Settings
-            </button>
+            </a>
             <ul className="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenu1">
               <li><a href="#">Notifications</a></li>
               <li><a href="#">Profile</a></li>

@@ -1,0 +1,11 @@
+@mixin popText {
+    text-shadow: -1px 1px 1px #fff;
+}
+
+h2 {
+    color: #fff;
+    font-size: 25px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
