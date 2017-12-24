@@ -12,7 +12,9 @@ export class App extends Component {
     render() {
         return (<div className="app">
             <Header username={this.props.user.name} />
-            <Budget />
+            <div className="main">
+            {this.props.children}
+        </div>
         </div>
         );
     }

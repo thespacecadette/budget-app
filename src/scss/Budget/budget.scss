@@ -11,14 +11,6 @@
 }
 
 .budget {
-    padding: $component-spacing;
-
-    /* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#300522+0,d86e8e+100 */
-    background: $musk; /* Old browsers */
-    background: -moz-linear-gradient(45deg, $musk 0%, $dusk 100%); /* FF3.6-15 */
-    background: -webkit-linear-gradient(45deg, $musk 0%, $dusk 100%); /* Chrome10-25,Safari5.1-6 */
-    background: linear-gradient(45deg, $musk 0%, $dusk 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
-    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr=$musk, endColorstr=$dusk,GradientType=1 ); /* IE6-9 fallback on horizontal gradient */
     
     &__header {
         margin-bottom: $component-spacing;

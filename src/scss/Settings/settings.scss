@@ -1,7 +1,15 @@
 .settings {
-   float: right;
+   &__nav {
+    float: right;
+    
+       .dropdown-toggle {
+          cursor: pointer;
+       }
+   }
 
-   .dropdown-toggle {
-      cursor: pointer;
+   &__frequency {
+       label {
+        margin-right: $element-spacing;
+       }
    }
 }
