@@ -1,0 +1,91 @@
+@mixin addButtons {
+    text-align: center;
+    background-color: $dusk;
+    float: right;
+
+    &:hover {
+            background-color: $musk;
+            color: #fff;
+            border-color: $musk;
+        }
+}
+
+.budget {
+    padding: $component-spacing;
+
+    /* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#300522+0,d86e8e+100 */
+    background: $musk; /* Old browsers */
+    background: -moz-linear-gradient(45deg, $musk 0%, $dusk 100%); /* FF3.6-15 */
+    background: -webkit-linear-gradient(45deg, $musk 0%, $dusk 100%); /* Chrome10-25,Safari5.1-6 */
+    background: linear-gradient(45deg, $musk 0%, $dusk 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr=$musk, endColorstr=$dusk,GradientType=1 ); /* IE6-9 fallback on horizontal gradient */
+    
+    &__header {
+        margin-bottom: $component-spacing;
+        border-bottom: 1px solid $border-colour;
+        padding-bottom: $element-spacing;
+    }
+
+    &__addExpense {
+        @include addButtons();
+        border-radius: 5px 0 0 5px;
+        border-right: 1px solid $musk;
+    }
+
+    &__addIncome {
+        @include addButtons();
+        border-radius: 0 5px 5px 0;
+    }
+
+    &__items {
+        display: inline-block;
+    }
+
+    &__items-appear {
+        opacity: 0;
+        transform:   translate(-250px,0);
+        transform: translate3d(-250px,0,0);
+    }
+
+    &__items-appear-active {
+        opacity: 1;
+        transition: opacity 1s ease;
+        transform:   translate(0,0);
+        transform: translate3d(0,0,0);
+        transition-property: transform, opacity;
+        transition-duration: 300ms;
+        transition-timing-function: cubic-bezier(0.175, 0.665, 0.320, 1), linear;
+    }
+
+    &__items-enter {
+        opacity: 0;
+        transform:   translate(-250px,0);
+        transform: translate3d(-250px,0,0);
+    }
+
+    &__items-enter-active {
+        opacity: 1;
+        transition: opacity 1s ease;
+        transform:   translate(0,0);
+        transform: translate3d(0,0,0);
+        transition-property: transform, opacity;
+        transition-duration: 300ms;
+        transition-timing-function: cubic-bezier(0.175, 0.665, 0.320, 1), linear;
+    }
+
+    &__items-leave {
+        opacity: 1;
+        transform:   translate(0,0,0);
+        transform: translate3d(0,0,0);
+        transition-property: transform, opacity;
+        transition-duration: 300ms;
+        transition-timing-function: cubic-bezier(0.175, 0.665, 0.320, 1), linear;
+    }
+
+    &__items-leave-active {
+        opacity: 0;
+        transform:   translate(250px,0);
+        transform: translate3d(250px,0,0);
+    }
+
+}
