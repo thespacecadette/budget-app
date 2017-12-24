@@ -2,5 +2,9 @@
     width: 100%;
     background-color: $grey;
     padding: $block-spacing;
-    margin-bottom: $component-spacing;
+    
+    &__name {
+        color: $ruby;
+        display: inline-block;
+    }
 }

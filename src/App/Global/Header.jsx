@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
+import Settings from './../Settings/index.js';
 
 export default class Header extends Component {
     constructor(props) {
@@ -8,7 +9,8 @@ export default class Header extends Component {
 
     render() {
         return <div className="header">
-            <div className="name">welcome {this.props.username}</div>
+            <div className="header__name">welcome {this.props.username}</div>
+            <Settings />            
             </div>;
     }
 
