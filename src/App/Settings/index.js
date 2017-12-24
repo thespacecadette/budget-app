@@ -11,7 +11,6 @@ export class Settings extends Component {
     }
 
     render() {
-        console.log('props', this.props);
         return (<div className="settings">
             <h2>Budget settings</h2>
             <Notification type="success" message={this.props.settings.status} />

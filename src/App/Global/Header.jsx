@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import Settings from './../Settings/components/nav.js';
+import Settings from './../Settings/components/nav.jsx';
 
 export default class Header extends Component {
     constructor(props) {

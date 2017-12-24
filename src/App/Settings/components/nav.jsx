@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import { connect } from 'react-redux';
 import { Link } from 'react-router';
 
 export class SettingsNav extends Component {
@@ -23,10 +22,9 @@ export class SettingsNav extends Component {
               Settings
             </a>
             <ul className="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenu1">
-              <li><a href="#">Notifications</a></li>
               <li><Link to="/budget-settings">Budget</Link></li>
-              <li role="separator" className="divider"></li>
-              <li><a href="#">Log out</a></li>
+              {/*<li><a href="#">Notifications</a></li><li role="separator" className="divider"></li>
+              <li><a href="#">Log out</a></li>*/}
             </ul>
           </div>
         </div>);
@@ -52,10 +50,10 @@ SettingsNav.propTypes = {
 //     removeIncomeExpense: (id, amount, type, total, totalExpenses) => dispatch(removeIncomeExpense(id, amount, type, total, totalExpenses)),
 // });
 
-export const ConnectedAppContainer = connect(
-    // mapStateToProps,
-    // mapDispatchToProps
-)(SettingsNav)
+// export const ConnectedAppContainer = connect(
+//     // mapStateToProps,
+//     // mapDispatchToProps
+// )(SettingsNav)
 
-export default ConnectedAppContainer;
+export default SettingsNav;
 
