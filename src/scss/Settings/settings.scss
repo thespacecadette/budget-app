@@ -7,6 +7,11 @@
        }
    }
 
+   h3 {
+       color: $light-grey;
+       margin-bottom: $element-spacing;
+   }
+
    &__frequency {
        label {
         margin-right: $element-spacing;

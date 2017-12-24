@@ -7,7 +7,7 @@ import BudgetSettings from './App/Settings/index.js';
 
 const routes = (
   <Route path='/' component={AppContainer}>
-    <IndexRoute component={BudgetSettings} />
+    <IndexRoute component={Budget} />
     <Route path='budget-settings' component={BudgetSettings} />
   </Route>
 )

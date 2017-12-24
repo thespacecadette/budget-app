@@ -28,7 +28,7 @@ describe('Settings', () => {
         const settings = render(<Settings {...props} store={store} />);
 
         expect(settings).toExist();
-        expect(settings.find('h2').text()).toBe('Budget settings');
+        expect(settings.find('h2').text()).toBe('Settings');
     });
 
     // it('should not render initially with notification, 2 add buttons and no add form', () => {

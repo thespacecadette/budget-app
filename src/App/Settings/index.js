@@ -12,7 +12,7 @@ export class Settings extends Component {
 
     render() {
         return (<div className="settings">
-            <h2>Budget settings</h2>
+            <h2>Settings</h2>
             <Notification type="success" message={this.props.settings.status} />
             <form>
                 <div className="radio settings__frequency">
